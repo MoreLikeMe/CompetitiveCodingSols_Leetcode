@@ -19,12 +19,6 @@ class Solution {
             if(min>dp[n][i])
                 min = dp[n][i];
         }
-        for(int i=0;i<=n;i++){
-            for(int j=0;j<=n+1;j++){
-                System.out.print(dp[i][j] + " "); 
-            }
-            System.out.println();
-        }
         return min;
     }
 }
