@@ -8,6 +8,7 @@ class Solution {
         while(flag){
             itr++;
             for(int i=0;i<strs.length-1;i++){
+                // for testcases "a","ab" || "ab","a"
                 if(itr>=strs[i].length() || itr>=strs[i+1].length() || strs[i].charAt(itr)!=strs[i+1].charAt(itr)){
                     flag = false;
                     break;
