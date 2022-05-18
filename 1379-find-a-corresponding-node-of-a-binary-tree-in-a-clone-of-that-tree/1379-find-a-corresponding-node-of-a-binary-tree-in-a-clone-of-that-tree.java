@@ -10,23 +10,26 @@
 
 class Solution {
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        return recurCall(cloned, target.val);
-    }
-    
-    public TreeNode recurCall(TreeNode cloned, int val){
-        if(cloned==null){
-            return null;
-        }
-        if(cloned.val==val){
+        
+        if(original.val == target.val && cloned.val == target.val ){
             return cloned;
         }
         
-        TreeNode temp = null;
-        temp = recurCall(cloned.left, val);
-        if(temp!=null){
-            return temp;
+        TreeNode left=null, right=null;
+        if(original.left!=null && cloned.left!=null){
+            left = getTargetCopy(original.left, cloned.left, target);
         }
-        return recurCall(cloned.right, val);
+        if(original.right!=null && cloned.right!=null){
+            right = getTargetCopy(original.right, cloned.right, target);
+        }
         
+        if(left!=null){
+            return left;
+        } else if(right!=null){
+            return right;
+        } else{
+            return null;
+        }
+         
     }
 }
