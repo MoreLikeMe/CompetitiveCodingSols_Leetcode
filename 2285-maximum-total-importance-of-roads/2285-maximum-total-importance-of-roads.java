@@ -7,16 +7,16 @@ class Solution {
             freq.put(road[1], freq.getOrDefault(road[1], 0)+1);
         }
         
-        PriorityQueue<Integer> q = new PriorityQueue<>((a,b) -> b-a);
+        PriorityQueue<int[]> q = new PriorityQueue<>((a,b) -> b[1]-a[1]);
         
         for(Map.Entry<Integer, Integer> m: freq.entrySet()){
-            q.add(m.getValue());
+            q.add(new int[]{m.getKey(), m.getValue()});
         }
         
         long sum = 0;
         while(!q.isEmpty()){
-            int t = q.poll();
-            sum = sum + ((long)n*t);
+            int[] t = q.poll();
+            sum = sum + ((long)n*t[1]);
             n--;
         }
         
