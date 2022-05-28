@@ -5,6 +5,9 @@ class Solution {
         }
         int[] arr = new int[s.length()];
         arr[0] = s.charAt(0)=='('?1:0;
+        //all four combinations in which two adjacent brackets can occur
+        // (( , (), )), )(
+        //give it level by level values
         for(int i=1;i<arr.length;i++){
             if(s.charAt(i)=='(' && s.charAt(i-1)=='('){ 
                 arr[i] = arr[i-1] + 1;
@@ -21,12 +24,18 @@ class Solution {
         int max = Integer.MIN_VALUE;
         
         for(int i=0;i<arr.length;i++){
+            //when its zero means all brackets processed till then
+            //start a new hashMap
             if(arr[i]==0){
                 map = new HashMap<Integer, Integer>();
                 continue;
             }
+            
+            //remove the just larger element than current
+            //as that level crosses
             map.remove(arr[i]+1);
             if(map.containsKey(arr[i])){
+                //only if its a not ending with (... then the chunk can be valid parenthesis
                 if(s.charAt(i)!='(' && max<(i - map.get(arr[i])))
                     max = i - map.get(arr[i]);
             } else {
