@@ -13,23 +13,25 @@ class Solution {
             i++;
         } 
         
-        String r = "";
+        StringBuilder r = new StringBuilder("");
         while(!s.isEmpty() ){
-            r = s.pop() + r;
+            r.append(s.pop());
         }
         
+        r.reverse();
+        
         if(popCount<k){
-            r = r.substring(0,len-k);
+            r = new StringBuilder(r.substring(0,len-k));
         }
         
         while(r.length()!=0 && r.charAt(0)=='0'){
-            r=r.substring(1, r.length());
+            r = new StringBuilder(r.substring(1, r.length()));
         }
         
         if(r.length()==0){
             return "0";
         }
         
-        return r;
+        return r.toString();
     }
 }
