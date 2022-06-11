@@ -14,11 +14,7 @@ class Solution {
             nextLesser.push(i);
         }
         
-        for(int i=0;i<len;i++){
-            System.out.println(nextArr[i]);
-        }
-        
-        System.out.println();
+        nextLesser = null;
         
         //get the index of previous smaller Element
         Stack<Integer> prevLesser = new Stack<>();
@@ -32,9 +28,7 @@ class Solution {
             prevLesser.push(i);
         }
         
-        for(int i=0;i<len;i++){
-            System.out.println(prevArr[i]);
-        }
+        prevLesser = null;
         
         //Iterate over the nextArr and prevArr to calculate
         //the maximum area covered
