@@ -3,30 +3,32 @@ class Solution {
         int len = heights.length;
         
         //get the index of next smaller Element
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> nextLesser = new Stack<>();
         int[] nextArr = new int[len];
         Arrays.fill(nextArr, -1);
         for(int i=0;i<len;i++){
-            while(!stack.isEmpty() && heights[i]<heights[stack.peek()]){
-                int t = stack.pop();
+            while(!nextLesser.isEmpty() && heights[i]<heights[nextLesser.peek()]){
+                int t = nextLesser.pop();
                 nextArr[t] = i;
             }
-            stack.push(i);
+            nextLesser.push(i);
         }
         
+        nextLesser = null;
+        
         //get the index of previous smaller Element
-        stack = new Stack<>();
+        Stack<Integer> prevLesser = new Stack<>();
         int[] prevArr = new int[len];
         Arrays.fill(prevArr, -1);
         for(int i=len-1;i>=0;i--){
-            while(!stack.isEmpty() && heights[i]<heights[stack.peek()]){
-                int t = stack.pop();
+            while(!prevLesser.isEmpty() && heights[i]<heights[prevLesser.peek()]){
+                int t = prevLesser.pop();
                 prevArr[t] = i;
             }
-            stack.push(i);
+            prevLesser.push(i);
         }
         
-        stack = null;
+        prevLesser = null;
         
         //Iterate over the nextArr and prevArr to calculate
         //the maximum area covered
