@@ -1,3 +1,5 @@
+//Try to get the maximum length of the subarray with sum (totalSum - x)
+//the rest of it will be the array parts which will be deleted...
 class Solution {
     public int minOperations(int[] nums, int x) {
         
