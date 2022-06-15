@@ -21,6 +21,8 @@ class Solution {
         return max;
     }
     
+    //check that only one character is different or not inbetween
+    //two strings
     public boolean checkString(String s1, String s2){
         int i=0,j=0;
         boolean flag = false;
