@@ -12,9 +12,9 @@ class Solution {
                     nums[k] = nums[k+1];
                 } else if(k==nums.length-2){
                     nums[k+1] = nums[k];
-                } else if(k>0 && k<nums.length-1 && nums[k-1]<=nums[k+1]){
+                } else if(nums[k-1]<=nums[k+1]){
                     nums[k] = nums[k+1];
-                } else if (k>0 && k<nums.length-1 && nums[k-1]>nums[k+1]){
+                } else if (nums[k-1]>nums[k+1]){
                     nums[k+1] = nums[k];
                 }
             }
