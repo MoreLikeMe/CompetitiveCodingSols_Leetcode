@@ -13,6 +13,8 @@ class Solution {
             for(int s: sq){
                 if(i-s>=0){
                     dp[i] = Math.min(dp[i], dp[i-s]+1);
+                } else {
+                    break;
                 }
             }
         }
