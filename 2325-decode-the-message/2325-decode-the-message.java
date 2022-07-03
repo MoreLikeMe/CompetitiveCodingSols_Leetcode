@@ -1,15 +1,13 @@
 class Solution {
     public String decodeMessage(String key, String message) {
-        Set<Character> charSet = new HashSet<Character>();
         char[] mapping = new char[26];
         int ind = 0;
         for(int i=0;i<key.length();i++){
-            if(key.charAt(i)!=' ' && !charSet.contains(key.charAt(i))){
-                charSet.add(key.charAt(i));
+            if(key.charAt(i)!=' ' && mapping[key.charAt(i)-97]==0){
                 mapping[key.charAt(i)-97] = (char)(ind+97);
                 ind++;
             }
-            if(charSet.size()==26){
+            if(ind==26){
                 break;
             }
         }
