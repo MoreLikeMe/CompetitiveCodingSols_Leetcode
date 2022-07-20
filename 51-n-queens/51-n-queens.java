@@ -28,7 +28,7 @@ class Solution {
         
         //recursive call
         for(int i=0;i<n;i++){
-            if(!isColOrDiagonalOccupied(rowcol, row, i+1)){
+            if(rowcol[row]==-1 && !isColOrDiagonalOccupied(rowcol, row, i+1)){
                 rowcol[row] = i+1;
                 recurCall(n, row+1, rowcol, result);
                 rowcol[row] = -1;
