@@ -6,28 +6,27 @@ class Solution {
         }
         int[] cache = new int[s.length()];
         Arrays.fill(cache, -1);
-        return isStringValid(s, set, 0, cache);
+        return isStringValid(s, set, 0, cache)==1?true:false;
     }
     
-    public boolean isStringValid(String s, Set<String> set, int index, int[] cache){
+    public int isStringValid(String s, Set<String> set, int index, int[] cache){
         
         if(index==s.length()){
-            return true;
+            return 1;
         }
         
         if(cache[index]!=-1){
-            return cache[index]==1?true:false;
+            return cache[index];
         }
         
-        boolean result = false;
-        String intermediate = "";
+        cache[index] = 0;
+        StringBuilder intermediate = new StringBuilder("");
         for(int i=index;i<s.length();i++){
-            intermediate += s.charAt(i);
-            if(set.contains(intermediate)){
-                result = (result || isStringValid(s, set, i+1, cache));
+            intermediate.append(s.charAt(i));
+            if(set.contains(intermediate.toString())){
+                cache[index] = (cache[index] | isStringValid(s, set, i+1, cache));
             }
         }
-        cache[index] = (result==true?1:0);
-        return result;
+        return cache[index];
     }
 }
