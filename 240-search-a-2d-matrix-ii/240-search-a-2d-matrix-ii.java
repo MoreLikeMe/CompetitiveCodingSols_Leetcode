@@ -4,7 +4,7 @@ class Solution {
         int i = 0, j = col-1;
         while(validIndex(i,j,row,col)){
             if(matrix[i][j]==target){
-                break;
+                return true;
             }
             else if(matrix[i][j]>target){
                 j--;
@@ -14,7 +14,7 @@ class Solution {
             }
         }
         
-        return validIndex(i,j,row,col);
+        return false;
     }
     
     public boolean validIndex(int i, int j, int row, int col){
