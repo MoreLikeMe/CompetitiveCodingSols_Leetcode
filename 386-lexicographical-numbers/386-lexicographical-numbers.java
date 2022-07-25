@@ -2,7 +2,7 @@ class Solution {
     public List<Integer> lexicalOrder(int n) {
         Trie obj = new Trie();
         obj.insert(n);
-        return obj.countLexographicalNumbers(obj, new String(""), new ArrayList<Integer>());
+        return obj.countLexographicalNumbers(obj, 0, new ArrayList<Integer>());
     }
 }
 
@@ -33,14 +33,14 @@ class Trie{
         }
     }
     
-    public List<Integer> countLexographicalNumbers(Trie cur, String partial, List<Integer> res){
+    public List<Integer> countLexographicalNumbers(Trie cur, int partial, List<Integer> res){
         Trie[] r = cur.ref;
-        if(partial.length()!=0){
-            res.add(Integer.parseInt(partial));
+        if(partial!=0){
+            res.add(partial);
         }
         for(int i=0;i<10;i++){
             if(r[i]!=null){
-                countLexographicalNumbers(r[i], (partial + i), res);
+                countLexographicalNumbers(r[i], (partial*10 + i), res);
             }
         }
         return res;
