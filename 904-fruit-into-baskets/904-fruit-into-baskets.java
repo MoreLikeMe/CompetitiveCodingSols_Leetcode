@@ -6,7 +6,6 @@ class Solution {
         int maxLen = Integer.MIN_VALUE;
         
         for(int i=0,j=0;j<fruits.length;j++){
-            int key = -1;
             //when a new tree is coming on top of already 2 trees
             //remove the farthest type of tree
             //sink the array to the last occurence of the farthest tree
@@ -16,11 +15,10 @@ class Solution {
                         //set window starting position to the last 
                         //occurence of the farthest tree + 1
                         i = m.getValue() + 1;
-                        key = m.getKey();
                         break;
                     }
                 }
-                curMap.remove(Integer.valueOf(key));
+                curMap.remove(Integer.valueOf(fruits[i-1]));
             }
             
             //add the every tree into the set
