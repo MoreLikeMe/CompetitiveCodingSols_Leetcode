@@ -1,6 +1,5 @@
 class Solution {
     public List<List<String>> partition(String s) {
-        map = new HashMap<>();
         return partitionRecursiveCall(s, 0, new ArrayList<String>(), new ArrayList<List<String>>());
     }
     
@@ -23,24 +22,17 @@ class Solution {
         return result;
     }
     
-    private static Map<String, Boolean> map;
     
     private boolean isPalindrome(String s){
-        
-        if(map.containsKey(s)){
-            return map.get(s);
-        }
         
         int i=0;
         int j=s.length()-1;
         while(i<j){
             if(s.charAt(i)!=s.charAt(j)){
-                map.put(s, false);
                 return false;
             }
             i++; j--;
         }
-        map.put(s, true);
         return true;
     }
 }
