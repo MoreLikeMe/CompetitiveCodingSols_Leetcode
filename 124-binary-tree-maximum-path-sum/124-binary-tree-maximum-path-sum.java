@@ -28,12 +28,16 @@ class Solution {
         }
         int leftSum =  maxPathSumRecursive(root.left);
         int rightSum = maxPathSumRecursive(root.right);
-        int sum = root.val + (leftSum<0?0:leftSum) + (rightSum<0?0:rightSum);
+        int sum = root.val + leftSum + rightSum;
         if(sum>maxValue){
             maxValue = sum;
         }
         
-        return ((Math.max(leftSum, rightSum)<0?0:Math.max(leftSum, rightSum)) + root.val);
+        if(sum<0){
+            return 0;
+        }
+        
+        return (Math.max(leftSum, rightSum) + root.val);
     }
     
 }
